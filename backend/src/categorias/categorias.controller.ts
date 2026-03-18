@@ -24,6 +24,7 @@ import { diskStorage, FileFilterCallback } from 'multer';
 import type { Express } from 'express';
 import * as path from 'path';
 import * as fs from 'fs';
+import { getUploadSubdir } from '../common/upload-path';
 
 @Controller('categorias')
 @ApiTags('Categorias')
@@ -84,7 +85,7 @@ export class CategoriasController {
     return {
       storage: diskStorage({
         destination: (req, file, cb) => {
-          const uploadPath = path.join(process.cwd(), 'uploads', 'categorias');
+          const uploadPath = getUploadSubdir('categorias');
           if (!fs.existsSync(uploadPath)) {
             fs.mkdirSync(uploadPath, { recursive: true });
           }

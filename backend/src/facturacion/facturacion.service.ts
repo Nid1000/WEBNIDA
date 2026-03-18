@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import PDFDocument from 'pdfkit';
 import sharp from 'sharp';
+import { getUploadSubdir } from '../common/upload-path';
 
 @Injectable()
 export class FacturacionService {
@@ -13,7 +14,7 @@ export class FacturacionService {
     process.env.DECOLECTA_BASE_URL || 'https://api.decolecta.com/v1';
 
   private ensureFolder() {
-    const folder = path.join(process.cwd(), 'uploads', 'comprobantes');
+    const folder = getUploadSubdir('comprobantes');
     if (!fs.existsSync(folder)) fs.mkdirSync(folder, { recursive: true });
     return folder;
   }

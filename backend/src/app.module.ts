@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
@@ -13,13 +12,14 @@ import { PedidosModule } from './pedidos/pedidos.module';
 import { FacturacionModule } from './facturacion/facturacion.module';
 import { ContactoModule } from './contacto/contacto.module';
 import { ReportesModule } from './reportes/reportes.module';
+import { getUploadsRoot } from './common/upload-path';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     // Servir archivos estáticos (ej. imágenes) desde /uploads
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'uploads'),
+      rootPath: getUploadsRoot(),
       serveRoot: '/uploads',
     }),
     PrismaModule,

@@ -23,6 +23,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { CreateProductoDto } from './dto/create-producto.dto';
 import { UpdateProductoDto } from './dto/update-producto.dto';
+import { getUploadSubdir } from '../common/upload-path';
 
 @Controller('productos')
 @ApiTags('Productos')
@@ -56,7 +57,7 @@ export class ProductosController {
     return {
       storage: diskStorage({
         destination: (req, file, cb) => {
-          const uploadPath = path.join(process.cwd(), 'uploads', 'productos');
+          const uploadPath = getUploadSubdir('productos');
           if (!fs.existsSync(uploadPath)) {
             fs.mkdirSync(uploadPath, { recursive: true });
           }
