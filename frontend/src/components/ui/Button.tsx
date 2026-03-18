@@ -21,7 +21,10 @@ const sizeClasses = {
   lg: "px-5 py-2.5 text-base",
 };
 
-export default function Button({ variant = "primary", size = "md", loading, className = "", children, asChild = false, disabled, ...props }: ButtonProps) {
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  { variant = "primary", size = "md", loading, className = "", children, asChild = false, disabled, ...props },
+  ref,
+) {
   const base = `${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
 
   // AsChild: permite usar Link o 'a' conservando comportamiento básico
@@ -38,8 +41,10 @@ export default function Button({ variant = "primary", size = "md", loading, clas
   }
 
   return (
-    <button {...props} className={base} disabled={disabled || loading} aria-disabled={disabled || loading}>
+    <button {...props} ref={ref} className={base} disabled={disabled || loading} aria-disabled={disabled || loading}>
       {loading ? <span>Cargando...</span> : children}
     </button>
   );
-}
+});
+
+export default Button;

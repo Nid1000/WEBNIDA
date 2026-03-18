@@ -25,7 +25,8 @@ const schema = z.object({
     .or(z.literal("")),
 });
 
-type FormValues = z.infer<typeof schema>;
+type FormInput = z.input<typeof schema>;
+type FormValues = z.output<typeof schema>;
 
 export default function NuevoProductoPage() {
   const router = useRouter();
@@ -39,7 +40,7 @@ export default function NuevoProductoPage() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormValues>({
+  } = useForm<FormInput, unknown, FormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
       nombre: "",

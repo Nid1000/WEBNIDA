@@ -87,15 +87,15 @@ export default function AdminReportesPage() {
           <input type="date" value={hasta} onChange={(e) => setHasta(e.target.value)} className="rounded-md border border-slate-300 bg-white px-2 py-1 text-sm" />
           <div className="inline-flex rounded-md border border-slate-300 bg-white text-sm">
             <button
-              className={buttonClasses({ variant: modo === "diario" ? "primary" : "ghost", size: "sm" })}
+              className={buttonClasses({ variant: modo === "diario" ? "primary" : "outline-secondary", size: "sm" })}
               onClick={() => setModo("diario")}
             >Diario</button>
             <button
-              className={buttonClasses({ variant: modo === "semanal" ? "primary" : "ghost", size: "sm" })}
+              className={buttonClasses({ variant: modo === "semanal" ? "primary" : "outline-secondary", size: "sm" })}
               onClick={() => setModo("semanal")}
             >Semanal</button>
             <button
-              className={buttonClasses({ variant: modo === "mensual" ? "primary" : "ghost", size: "sm" })}
+              className={buttonClasses({ variant: modo === "mensual" ? "primary" : "outline-secondary", size: "sm" })}
               onClick={() => setModo("mensual")}
             >Mensual</button>
           </div>
