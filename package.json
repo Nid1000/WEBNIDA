@@ -1,7 +1,11 @@
 {
   "name": "webnida-bakery",
   "version": "1.0.0",
+  "private": true,
   "description": "Página web profesional para venta de panes, pasteles y productos de repostería",
+  "workspaces": [
+    "frontend"
+  ],
   "scripts": {
     "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
     "backend": "cd backend && npm run start:dev",
