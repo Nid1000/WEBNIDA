@@ -6,9 +6,8 @@ const API_BASE =
   "http://localhost:5001";
 
 const nextConfig: NextConfig = {
-  turbopack: {
-    root: process.cwd(),
-  },
+  reactStrictMode: true,
+
   async rewrites() {
     return [
       {
@@ -21,8 +20,8 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
   images: {
-    qualities: [80],
     remotePatterns: [
       {
         protocol: "http",
