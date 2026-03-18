@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-03-2026 a las 19:08:38
+-- Tiempo de generación: 18-03-2026 a las 20:31:34
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -63,6 +63,53 @@ CREATE TABLE `calificaciones` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `catalogo_distritos_huancayo`
+--
+
+CREATE TABLE `catalogo_distritos_huancayo` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(120) NOT NULL,
+  `orden_lista` int(11) NOT NULL DEFAULT 0,
+  `activo` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `catalogo_distritos_huancayo`
+--
+
+INSERT INTO `catalogo_distritos_huancayo` (`id`, `nombre`, `orden_lista`, `activo`, `created_at`) VALUES
+(1, 'Huancayo', 1, 1, '2026-03-18 19:03:08'),
+(2, 'El Tambo', 2, 1, '2026-03-18 19:03:08'),
+(3, 'Chilca', 3, 1, '2026-03-18 19:03:08'),
+(4, 'Carhuacallanga', 4, 1, '2026-03-18 19:03:08'),
+(5, 'Cullhuas', 5, 1, '2026-03-18 19:03:08'),
+(6, 'Chacapampa', 6, 1, '2026-03-18 19:03:08'),
+(7, 'Chicche', 7, 1, '2026-03-18 19:03:08'),
+(8, 'Chongos Alto', 8, 1, '2026-03-18 19:03:08'),
+(9, 'Chupuro', 9, 1, '2026-03-18 19:03:08'),
+(10, 'Colca', 10, 1, '2026-03-18 19:03:08'),
+(11, 'Huacrapuquio', 11, 1, '2026-03-18 19:03:08'),
+(12, 'Hualhuas', 12, 1, '2026-03-18 19:03:08'),
+(13, 'Huancán', 13, 1, '2026-03-18 19:03:08'),
+(14, 'Huasicancha', 14, 1, '2026-03-18 19:03:08'),
+(15, 'Huayucachi', 15, 1, '2026-03-18 19:03:08'),
+(16, 'Ingenio', 16, 1, '2026-03-18 19:03:08'),
+(17, 'Pariahuanca', 17, 1, '2026-03-18 19:03:08'),
+(18, 'Pilcomayo', 18, 1, '2026-03-18 19:03:08'),
+(19, 'Pucará', 19, 1, '2026-03-18 19:03:08'),
+(20, 'Quichuay', 20, 1, '2026-03-18 19:03:08'),
+(21, 'Quilcas', 21, 1, '2026-03-18 19:03:08'),
+(22, 'Santo Domingo de Acobamba', 22, 1, '2026-03-18 19:03:08'),
+(23, 'Saño', 23, 1, '2026-03-18 19:03:08'),
+(24, 'Sapallanga', 24, 1, '2026-03-18 19:03:08'),
+(25, 'Sicaya', 25, 1, '2026-03-18 19:03:08'),
+(26, 'Viques', 26, 1, '2026-03-18 19:03:08'),
+(27, 'San Agustín de Cajas', 27, 1, '2026-03-18 19:03:08');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `categorias`
 --
 
@@ -82,7 +129,6 @@ CREATE TABLE `categorias` (
 
 INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `imagen`, `activo`, `created_at`, `updated_at`) VALUES
 (1, 'Panes', 'Variedad de panes frescos y artesanales', 'categorias/categoria-1760734219985-415066369.png', 1, '2025-10-10 22:39:16.000', '2025-10-17 19:50:19.000'),
-(2, 'Pasteles', 'Deliciosos pasteles para toda ocasión', 'categorias/categoria-1760734533477-708443366.png', 1, '2025-10-10 22:39:16.000', '2025-10-17 19:55:33.000'),
 (3, 'Galletas', 'TOSTADA ', 'categorias/categoria-1771647772239-919254697.png', 1, '2025-10-10 22:39:16.000', '2026-02-21 04:22:52.000'),
 (4, 'Postres', 'Postres especiales y dulces', NULL, 1, '2025-10-10 22:39:16.000', '2025-10-10 22:39:16.000'),
 (5, 'Tortas', 'Tortas personalizadas para celebraciones', NULL, 1, '2025-10-10 22:39:16.000', '2025-10-10 22:39:16.000');
@@ -119,6 +165,13 @@ CREATE TABLE `comprobantes` (
   `created_at` datetime(3) NOT NULL DEFAULT current_timestamp(3)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `comprobantes`
+--
+
+INSERT INTO `comprobantes` (`id`, `pedido_id`, `tipo`, `serie`, `numero`, `numero_formateado`, `archivo_nombre`, `archivo_ruta`, `mime`, `size_bytes`, `created_at`) VALUES
+(1, 21, 'boleta', 'B001', 1, 'B001-00000001', 'pedido-21-B001-00000001.pdf', 'comprobantes/pedido-21-B001-00000001.pdf', 'application/pdf', 1704, '2026-03-18 19:20:48.365');
+
 -- --------------------------------------------------------
 
 --
@@ -131,6 +184,14 @@ CREATE TABLE `comprobante_series` (
   `serie` varchar(10) NOT NULL,
   `correlativo` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `comprobante_series`
+--
+
+INSERT INTO `comprobante_series` (`id`, `tipo`, `serie`, `correlativo`) VALUES
+(1, 'boleta', 'B001', 1),
+(2, 'factura', 'F001', 0);
 
 -- --------------------------------------------------------
 
@@ -185,119 +246,9 @@ CREATE TABLE `login_logs` (
 --
 
 INSERT INTO `login_logs` (`id`, `usuario_id`, `admin_id`, `tipo_usuario`, `ip_address`, `user_agent`, `exitoso`, `created_at`) VALUES
-(1, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-11 13:20:07.000'),
-(2, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.100.3 Chrome/132.0.6834.210 Electron/34.5.1 Safari/537.36', 1, '2025-10-11 13:34:53.000'),
-(3, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-11 14:17:17.000'),
-(4, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.100.3 Chrome/132.0.6834.210 Electron/34.5.1 Safari/537.36', 1, '2025-10-11 14:28:26.000'),
-(5, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-11 14:35:05.000'),
-(6, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-11 14:47:59.000'),
-(7, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-11 15:05:37.000'),
-(8, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.100.3 Chrome/132.0.6834.210 Electron/34.5.1 Safari/537.36', 1, '2025-10-11 15:24:47.000'),
-(9, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-11 19:43:21.000'),
-(10, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.100.3 Chrome/132.0.6834.210 Electron/34.5.1 Safari/537.36', 1, '2025-10-11 20:19:09.000'),
-(11, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.100.3 Chrome/132.0.6834.210 Electron/34.5.1 Safari/537.36', 1, '2025-10-11 20:41:58.000'),
-(12, NULL, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 0, '2025-10-11 22:21:56.000'),
-(13, NULL, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 0, '2025-10-11 22:23:09.000'),
-(14, NULL, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 0, '2025-10-11 22:26:50.000'),
-(15, NULL, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 0, '2025-10-11 22:38:44.000'),
-(16, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-11 22:44:53.000'),
-(17, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-12 09:58:19.000'),
-(18, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT; Windows NT 10.0; es-PE) WindowsPowerShell/5.1.26100.6584', 1, '2025-10-12 10:29:02.000'),
-(19, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-13 10:48:19.000'),
-(20, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-13 11:04:48.000'),
-(21, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-13 11:25:18.000'),
-(22, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT; Windows NT 10.0; es-PE) WindowsPowerShell/5.1.26100.6584', 1, '2025-10-13 11:41:46.000'),
-(23, 2, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.100.3 Chrome/132.0.6834.210 Electron/34.5.1 Safari/537.36', 1, '2025-10-13 11:43:24.000'),
-(24, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-13 14:16:29.000'),
-(25, 2, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-13 14:16:51.000'),
-(26, 2, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.100.3 Chrome/132.0.6834.210 Electron/34.5.1 Safari/537.36', 1, '2025-10-13 15:13:18.000'),
-(27, 2, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-13 21:27:51.000'),
-(28, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-13 21:51:34.000'),
-(29, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-13 23:25:33.000'),
-(30, 4, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-13 23:34:51.000'),
-(31, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-14 10:19:35.000'),
-(32, NULL, 1, 'admin', '::1', 'curl/8.14.1', 1, '2025-10-15 03:44:02.000'),
-(33, 5, NULL, 'usuario', '::1', 'curl/8.14.1', 1, '2025-10-15 04:01:16.000'),
-(34, NULL, 1, 'admin', '::1', 'curl/8.14.1', 1, '2025-10-15 04:24:00.000'),
-(35, NULL, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 0, '2025-10-15 04:27:22.000'),
-(36, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-15 04:31:52.000'),
-(37, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-15 04:32:02.000'),
-(38, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-15 04:32:19.000'),
-(39, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 1, '2025-10-15 04:36:16.000'),
-(40, 2, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-15 04:39:09.000'),
-(41, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT; Windows NT 10.0; es-PE) WindowsPowerShell/5.1.26100.6584', 1, '2025-10-15 15:09:22.000'),
-(42, 6, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT; Windows NT 10.0; es-PE) WindowsPowerShell/5.1.26100.6584', 1, '2025-10-15 15:19:35.000'),
-(43, 6, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT; Windows NT 10.0; es-PE) WindowsPowerShell/5.1.26100.6584', 1, '2025-10-15 15:19:52.000'),
-(44, 2, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 1, '2025-10-15 15:27:25.000'),
-(45, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 1, '2025-10-15 15:33:31.000'),
-(46, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 1, '2025-10-15 15:35:50.000'),
-(47, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-15 15:36:02.000'),
-(48, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 1, '2025-10-15 15:44:16.000'),
-(49, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-15 15:47:56.000'),
-(50, 2, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-15 15:49:35.000'),
-(51, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 1, '2025-10-15 16:31:26.000'),
-(52, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 0, '2025-10-15 18:31:48.000'),
-(53, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 1, '2025-10-15 18:32:12.000'),
-(54, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-16 03:12:38.000'),
-(55, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-17 03:29:55.000'),
-(56, 2, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-17 03:32:15.000'),
-(57, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 1, '2025-10-17 04:02:39.000'),
-(58, 2, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-17 04:02:59.000'),
-(59, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-17 04:04:57.000'),
-(60, 2, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 1, '2025-10-17 04:23:56.000'),
-(61, NULL, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 0, '2025-10-17 13:54:46.000'),
-(62, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT; Windows NT 10.0; es-PE) WindowsPowerShell/5.1.26100.6899', 1, '2025-10-17 13:59:04.000'),
-(63, 2, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 1, '2025-10-17 14:06:42.000'),
-(64, 2, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-17 14:31:10.000'),
-(65, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-17 16:01:51.000'),
-(66, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-17 19:11:48.000'),
-(67, NULL, NULL, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 0, '2025-10-17 19:13:14.000'),
-(68, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-17 19:13:20.000'),
-(69, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 1, '2025-10-17 19:32:22.000'),
-(70, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 1, '2025-10-17 19:37:22.000'),
-(71, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 1, '2025-10-17 19:53:03.000'),
-(72, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36', 1, '2025-10-18 04:08:28.000'),
-(73, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-18 04:08:47.000'),
-(74, 2, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-18 04:11:24.000'),
-(75, 2, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 1, '2025-10-18 04:18:32.000'),
-(76, 2, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 0, '2025-10-18 15:10:08.000'),
-(77, NULL, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 0, '2026-02-18 04:07:40.000'),
-(78, NULL, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 0, '2026-02-18 04:11:47.000'),
-(79, NULL, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 0, '2026-02-18 04:11:59.000'),
-(80, NULL, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 0, '2026-02-18 04:12:52.000'),
-(81, NULL, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 0, '2026-02-18 04:12:59.000'),
-(82, 7, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 1, '2026-02-18 04:14:07.000'),
-(83, NULL, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-18 18:40:54.000'),
-(84, NULL, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-18 18:42:32.000'),
-(85, NULL, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-18 18:46:49.000'),
-(86, 8, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 0, '2026-02-21 02:29:43.000'),
-(87, 7, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 1, '2026-02-21 02:30:32.000'),
-(88, 8, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 0, '2026-02-21 02:32:33.000'),
-(89, 9, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 1, '2026-02-21 02:33:23.000'),
-(90, 9, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 1, '2026-02-21 02:33:36.000'),
-(91, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-21 03:56:38.000'),
-(92, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-21 04:01:34.000'),
-(93, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-21 04:01:46.000'),
-(94, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-21 04:01:48.000'),
-(95, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-21 04:01:49.000'),
-(96, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-21 04:01:53.000'),
-(97, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-21 04:02:07.000'),
-(98, NULL, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-21 04:02:23.000'),
-(99, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-21 04:02:46.000'),
-(100, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-21 04:14:42.000'),
-(101, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-21 04:14:49.000'),
-(102, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-21 04:14:52.000'),
-(103, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-21 04:14:54.000'),
-(104, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 0, '2026-02-21 04:14:56.000'),
-(105, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 1, '2026-02-21 04:15:17.000'),
-(106, 9, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 0, '2026-02-27 15:51:05.150'),
-(107, 8, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 0, '2026-02-27 15:51:36.535'),
-(108, 9, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 0, '2026-02-27 15:53:04.911'),
-(109, 9, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 0, '2026-02-27 15:54:20.047'),
-(110, 9, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 0, '2026-02-27 15:54:57.729'),
-(111, 9, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 0, '2026-02-27 15:55:18.891'),
-(112, 9, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 1, '2026-02-27 15:56:14.480'),
-(113, 9, NULL, 'usuario', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 1, '2026-02-27 15:59:19.922');
+(115, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', 1, '2026-03-18 19:18:53.591'),
+(116, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 1, '2026-03-18 19:19:27.570'),
+(117, NULL, 1, 'admin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0', 1, '2026-03-18 19:19:56.322');
 
 -- --------------------------------------------------------
 
@@ -356,26 +307,7 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`id`, `usuario_id`, `direccion_id`, `total`, `estado`, `fecha_entrega`, `direccion_entrega`, `distrito_entrega`, `numero_casa_entrega`, `telefono_contacto`, `notas`, `created_at`, `updated_at`) VALUES
-(1, 2, NULL, 492.00, 'pendiente', '2025-10-15', 'sdadsdasdssdasddsa', NULL, NULL, '931005970', 'sadasdfsfsdfa', '2025-10-13 21:50:53.000', '2025-10-13 21:50:53.000'),
-(2, 2, NULL, 24.00, 'pendiente', '2025-10-15', 'sdadsdasdssdasddsa', NULL, NULL, '931005970', 'dfsfsdsdf', '2025-10-13 22:10:13.000', '2025-10-13 22:10:13.000'),
-(3, 2, NULL, 246.00, 'listo', '2025-10-24', 'sdadsdasdssdasddsa', NULL, NULL, '931005970', 'sfasasffsadfasdas', '2025-10-13 22:24:57.000', '2025-10-13 22:55:17.000'),
-(4, 2, NULL, 36.03, 'pendiente', '2025-10-09', 'sdadsdasdssdasddsa', NULL, NULL, '931005970', 'wqdasddasdas', '2025-10-13 23:30:04.000', '2025-10-13 23:30:04.000'),
-(5, 4, NULL, 1599.00, 'pendiente', '2025-10-16', 'sdadsdasdssdasddsa', NULL, NULL, '931005970', 'asddasasffsa', '2025-10-13 23:35:56.000', '2025-10-13 23:35:56.000'),
-(6, 4, NULL, 48.04, 'pendiente', '2025-10-15', 'sdadsdasdssdasddsa', NULL, NULL, '931005970', 'wetshgyfjkghjmi ,ujfyngtbrtyh', '2025-10-13 23:38:01.000', '2025-10-13 23:38:01.000'),
-(7, 2, NULL, 48.00, 'pendiente', '2025-10-18', 'asdassdaasddsa', NULL, NULL, '931005970', 'asddasdas', '2025-10-17 03:32:43.000', '2025-10-17 03:32:43.000'),
-(8, 2, NULL, 48.00, 'pendiente', '2025-10-17', 'asdsdfasd', NULL, NULL, '931005970', 'sadfsdfdsafs', '2025-10-17 03:33:29.000', '2025-10-17 03:33:29.000'),
-(9, 2, NULL, 48.00, 'pendiente', '2025-10-18', 'sdafsdfsdfaasdf', NULL, NULL, '931005970', 'dsdfgsasdwese', '2025-10-17 04:03:48.000', '2025-10-17 04:03:48.000'),
-(10, 2, NULL, 36.00, 'pendiente', '2025-10-18', 'asddasASS', NULL, NULL, '9310059', 'SAdsadsadSA', '2025-10-17 04:12:24.000', '2025-10-17 04:12:24.000'),
-(11, 2, NULL, 36.00, 'cancelado', '2025-10-22', 'dfassdffsdfas', NULL, NULL, '931005970', 'sdfdfsfasfsd', '2025-10-17 04:22:47.000', '2026-02-21 04:17:36.000'),
-(12, 2, NULL, 41.00, 'cancelado', '2025-10-18', 'asffasfassfa', NULL, NULL, '931005970', 'sdadassda', '2025-10-17 05:04:10.000', '2026-02-21 04:17:36.000'),
-(13, 2, NULL, 24.00, 'cancelado', '2025-10-18', 'luiasdadsasd', NULL, NULL, '931005970', '11243213', '2025-10-17 05:28:54.000', '2026-02-21 04:17:37.000'),
-(14, 8, NULL, 26.00, 'cancelado', '2026-02-19', 'jrtrujillo', NULL, NULL, '974268690', 'tienda', '2026-02-18 22:26:23.000', '2026-02-21 04:17:38.000'),
-(15, 9, NULL, 3.00, 'pendiente', '2026-02-21', 'jr. trujillo 350 ', NULL, NULL, '974268690jijhjj', 'panes ', '2026-02-21 02:43:37.000', '2026-02-21 02:43:37.000'),
-(16, 9, NULL, 13.00, 'pendiente', '2026-02-21', 'jr trujillo', NULL, NULL, '97426869000', 'pan', '2026-02-21 02:53:28.000', '2026-02-21 02:53:28.000'),
-(17, 9, NULL, 13.00, 'pendiente', '2026-02-21', 'jr trujillo', NULL, NULL, '97426869000', NULL, '2026-02-21 03:01:15.000', '2026-02-21 03:01:15.000'),
-(18, 9, NULL, 12.00, 'pendiente', '2026-02-21', 'jr. trujillo', NULL, NULL, '974268', 'nida', '2026-02-21 03:22:29.000', '2026-02-21 03:22:29.000'),
-(19, 9, NULL, 6.00, 'cancelado', '2026-02-21', 'jr trujillo', NULL, NULL, '8445622', NULL, '2026-02-21 03:29:57.000', '2026-02-21 04:17:32.000'),
-(20, 9, NULL, 13.00, 'entregado', '2026-02-21', 'jr.trujillo', NULL, NULL, '974268690', 'ad', '2026-02-21 03:49:37.000', '2026-02-21 04:17:28.000');
+(21, 11, NULL, 19.00, 'pendiente', '2026-03-19', 'Jr. Lima', 'Huancayo', '350', '974268690', 'hol', '2026-03-18 19:20:47.783', '2026-03-18 19:20:47.783');
 
 -- --------------------------------------------------------
 
@@ -434,7 +366,9 @@ INSERT INTO `pedido_detalles` (`id`, `pedido_id`, `producto_id`, `cantidad`, `pr
 (20, 17, 11, 1, 13.00, 13.00),
 (21, 18, 9, 1, 12.00, 12.00),
 (22, 19, 10, 2, 3.00, 6.00),
-(23, 20, 11, 1, 13.00, 13.00);
+(23, 20, 11, 1, 13.00, 13.00),
+(24, 21, 13, 2, 6.00, 12.00),
+(25, 21, 16, 1, 7.00, 7.00);
 
 -- --------------------------------------------------------
 
@@ -461,18 +395,14 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `categoria_id`, `imagen`, `stock`, `destacado`, `activo`, `created_at`, `updated_at`) VALUES
-(1, 'luui', 'sdfsd', 12.00, 1, 'productos/producto-1760214539163-22084282.jpg', 0, 0, 0, '2025-10-11 14:28:59.000', '2025-10-16 03:12:53.000'),
-(2, 'asd', 'asdasd', 12.00, 1, 'productos/producto-1760216883014-167971100.png', 0, 0, 0, '2025-10-11 15:08:03.000', '2025-10-16 03:12:52.000'),
-(3, 'asdasddsas', 'qweeqwsdasdfgfghtrrt', 123.00, 5, 'productos/producto-1760419987216-266367056.jpeg', 0, 0, 0, '2025-10-11 20:42:25.000', '2025-10-16 03:12:50.000'),
-(4, 'Inca Kola', 'sdadasdasdasasddasasd', 12.01, 4, 'productos/producto-1760420243740-250749079.png', 42, 0, 0, '2025-10-13 23:29:09.000', '2025-10-16 03:12:49.000'),
-(5, 'Producto Test Nest', 'Producto de prueba creado desde script', 24.50, 1, 'https://via.placeholder.com/300.png', 5, 1, 0, '2025-10-15 03:45:25.000', '2025-10-15 03:47:02.000'),
-(6, 'Producto Test Nest', 'Producto de prueba creado desde script', 19.99, 1, 'https://via.placeholder.com/300.png', 5, 0, 0, '2025-10-15 03:51:17.000', '2025-10-16 03:12:47.000'),
-(7, 'Producto E2E Upload', 'Creado por prueba E2E con imagen', 7.50, 1, 'productos/producto-1760505899804-835132714.jpg', 5, 0, 0, '2025-10-15 04:24:59.000', '2025-10-16 03:12:46.000'),
-(8, 'Luis Cunyas', 'asddsasdfadsa', 12.00, 1, 'productos/producto-1760546914508-431986972.jpg', 12, 1, 0, '2025-10-15 15:48:34.000', '2025-10-16 03:12:44.000'),
-(9, 'pan', 'pan caliente', 12.00, 1, 'productos/producto-1760675462270-533732823.jpg', 14, 1, 1, '2025-10-17 03:31:02.000', '2025-10-17 03:31:02.000'),
-(10, 'queque', 'fsfsasffsfs', 3.00, 2, 'productos/producto-1760680374669-435624514.jpg', 14, 0, 1, '2025-10-17 04:52:54.000', '2025-10-17 04:52:54.000'),
-(11, 'fsaasd', '213df sfdsdas', 13.00, 3, 'productos/producto-1760680479495-544337280.jpeg', 1322, 0, 1, '2025-10-17 04:54:11.000', '2025-10-17 04:54:39.000'),
-(12, 'Tostadas Integrales', 'contiene 8 und ', 8.00, 3, 'productos/producto-1771648147570-1511884.png', 4, 1, 1, '2026-02-21 04:29:07.000', '2026-02-21 04:29:07.000');
+(13, 'ALFAJOR', NULL, 6.00, 4, 'productos/producto-1773861080819-513132247.jpg', 10, 0, 1, '2026-03-18 19:11:20.830', '2026-03-18 19:11:20.830'),
+(14, 'CHANCAY', NULL, 4.00, 1, 'productos/producto-1773861110947-897813601.png', 10, 1, 1, '2026-03-18 19:11:50.953', '2026-03-18 19:11:50.953'),
+(15, 'PAN INTEGRAL', NULL, 7.00, 1, 'productos/producto-1773861170202-860380929.png', 5, 0, 1, '2026-03-18 19:12:19.875', '2026-03-18 19:12:50.207'),
+(16, 'KARAMANDUKAS', NULL, 7.00, 4, 'productos/producto-1773861224236-371990791.png', 24, 0, 1, '2026-03-18 19:13:44.240', '2026-03-18 19:13:44.240'),
+(17, 'PAN DE MOLDE', NULL, 12.00, 1, 'productos/producto-1773861273034-460152199.png', 12, 0, 1, '2026-03-18 19:14:18.714', '2026-03-18 19:14:33.041'),
+(18, 'PAN INTEGRAL BLANCO', NULL, 9.00, 1, 'productos/producto-1773861324089-292209327.png', 9, 0, 1, '2026-03-18 19:15:24.093', '2026-03-18 19:15:24.093'),
+(19, 'TOSTADAS', NULL, 7.50, 3, 'productos/producto-1773861365971-396169824.png', 11, 0, 1, '2026-03-18 19:16:05.975', '2026-03-18 19:16:05.975'),
+(20, 'torta de chocolate', NULL, 55.00, 5, 'productos/producto-1773862190855-798742758.jpg', 5, 0, 1, '2026-03-18 19:29:50.862', '2026-03-18 19:29:50.862');
 
 -- --------------------------------------------------------
 
@@ -560,16 +490,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `password`, `telefono`, `direccion`, `distrito`, `numero_casa`, `activo`, `created_at`, `updated_at`) VALUES
-(1, 'Maria', 'Garcia', 'prueba+20251013120042@example.com', '$2a$10$HubpkZQdJ471MzRTsH5KxOvrSDnSHCq7hRvP7HJ0wDtmmY88HWUPK', '612345678', 'Calle 123, Ciudad', NULL, NULL, 1, '2025-10-13 11:00:42.000', '2025-10-13 11:00:42.000'),
-(2, 'luis', 'cunyas', 'luis@gmail.com', '$2a$10$cyRdakFyeTdD9Np8QkC2T.AB2nX.5pTGvZKXAn9We91qE5RpTzM9a', '931005970', 'uñas palian casa plomo', NULL, NULL, 1, '2025-10-13 11:24:21.000', '2025-10-13 11:24:21.000'),
-(3, 'Luis', 'cunyas', 'luis.delicias123@gmail.com', '$2a$10$YQpBz5vRJaLdnNfjJvNI8.pbfHdMo2NLcOIAudBScq790poQfXg12', '931005970', 'unas palian casa plomo', NULL, NULL, 1, '2025-10-13 11:29:33.000', '2025-10-13 11:29:33.000'),
-(4, 'rosa', 'melano', 'rosa@gmail.com', '$2a$10$g8kT3VSDrL5Hfbi0uKZAHON/hyj0dP2m9qUaeNv5s9FJ9ACoi7rdW', '931005970', 'uñas palian casa plomo', NULL, NULL, 1, '2025-10-13 23:34:23.000', '2025-10-18 04:09:19.000'),
-(5, 'Migra2', 'Test2', 'migracion.test.user1@delicias.com', '$2b$10$k/M7iUEYOYhE1As2uvNcDuNCG41/oy7ZXjrisZIuNbKdOiEPz.RKi', '600123456', 'Av. Migración 456', NULL, NULL, 1, '2025-10-15 03:57:08.000', '2025-10-15 04:00:58.000'),
-(6, 'Prueba', 'Usuario', 'test.user1760527153@example.com', '$2b$10$l.I9tY90fIp.InL4EhAvN.rRZqmLthvtnVmX9K/gkI0Afwfp6e/UK', '600123456', 'Calle Falsa 123', NULL, NULL, 1, '2025-10-15 15:19:12.000', '2025-10-15 15:19:12.000'),
-(7, 'NIDA', 'IZARRA', 'telloizarra@gmail.com', '$2b$10$JDnfGzoSt1zFlpEdtOi1U.Yus0QAshdxDYqkV0oAO5MsU4YqPhBI.', '974268690', 'TRUJILLO', NULL, NULL, 1, '2026-02-18 04:13:50.000', '2026-02-18 04:13:50.000'),
-(8, 'nida', 'tello', 'tello@gmail.com', '$2b$10$xiAPskPwIuJbb20SaJno1uO.U8NiiQwR8GKoUc53xi6tZU3wJDPCW', '974268690', 'trujillo', NULL, NULL, 1, '2026-02-18 18:47:14.000', '2026-02-18 18:47:14.000'),
-(9, 'Nida', 'tello', 'telloa@gmail.com', '$2b$10$YwqhVPrqfxnY2f6eYYrFv.PSoDM1khhwk0BeikXcGUOXdNqLToq16', '974268690', 'jr trujillo', NULL, NULL, 1, '2026-02-21 02:31:51.000', '2026-02-27 15:58:11.046'),
-(10, 'ODALI', 'TELLO', 'ODA@GMAIL.COM', '$2b$10$1CV.QdnaDCGDoFoFdGNYQuhU2oElOaisJ9iOQdX5LgeV43PU/Tmbe', '972468690', 'JR TRUJILLO', NULL, NULL, 1, '2026-03-03 18:07:52.192', '2026-03-03 18:07:52.192');
+(11, 'Nida', 'Telloizarra', 'nidatelloizarra3@gmail.com', '$2b$10$/ULCAPdMxeGnE1yHRqXuVOmXlNNZ5SKU0XGF2qcXzeyCJNdW3Iw8m', '974268690', 'Jr. Lima', 'Huancayo', '350', 1, '2026-03-18 19:17:10.435', '2026-03-18 19:17:10.435');
 
 -- --------------------------------------------------------
 
@@ -651,6 +572,13 @@ ALTER TABLE `calificaciones`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_calif_producto` (`producto_id`),
   ADD KEY `idx_calif_usuario` (`usuario_id`);
+
+--
+-- Indices de la tabla `catalogo_distritos_huancayo`
+--
+ALTER TABLE `catalogo_distritos_huancayo`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uk_catalogo_distritos_huancayo_nombre` (`nombre`);
 
 --
 -- Indices de la tabla `categorias`
@@ -771,6 +699,12 @@ ALTER TABLE `calificaciones`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `catalogo_distritos_huancayo`
+--
+ALTER TABLE `catalogo_distritos_huancayo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=392;
+
+--
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
@@ -780,13 +714,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `comprobantes`
 --
 ALTER TABLE `comprobantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `comprobante_series`
 --
 ALTER TABLE `comprobante_series`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `direcciones`
@@ -798,7 +732,7 @@ ALTER TABLE `direcciones`
 -- AUTO_INCREMENT de la tabla `login_logs`
 --
 ALTER TABLE `login_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT de la tabla `notificaciones`
@@ -816,19 +750,19 @@ ALTER TABLE `pagos`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido_detalles`
 --
 ALTER TABLE `pedido_detalles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `seguimiento`
@@ -852,7 +786,7 @@ ALTER TABLE `soporte`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
@@ -937,50 +871,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
--- --------------------------------------------------------
--- Catálogo de distritos de Huancayo para formularios
--- --------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `catalogo_distritos_huancayo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(120) NOT NULL,
-  `orden_lista` int(11) NOT NULL DEFAULT 0,
-  `activo` tinyint(1) NOT NULL DEFAULT 1,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uk_catalogo_distritos_huancayo_nombre` (`nombre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT IGNORE INTO `catalogo_distritos_huancayo` (`id`, `nombre`, `orden_lista`, `activo`) VALUES
-(1, 'Huancayo', 1, 1),
-(2, 'El Tambo', 2, 1),
-(3, 'Chilca', 3, 1),
-(4, 'Carhuacallanga', 4, 1),
-(5, 'Cullhuas', 5, 1),
-(6, 'Chacapampa', 6, 1),
-(7, 'Chicche', 7, 1),
-(8, 'Chongos Alto', 8, 1),
-(9, 'Chupuro', 9, 1),
-(10, 'Colca', 10, 1),
-(11, 'Huacrapuquio', 11, 1),
-(12, 'Hualhuas', 12, 1),
-(13, 'Huancán', 13, 1),
-(14, 'Huasicancha', 14, 1),
-(15, 'Huayucachi', 15, 1),
-(16, 'Ingenio', 16, 1),
-(17, 'Pariahuanca', 17, 1),
-(18, 'Pilcomayo', 18, 1),
-(19, 'Pucará', 19, 1),
-(20, 'Quichuay', 20, 1),
-(21, 'Quilcas', 21, 1),
-(22, 'Santo Domingo de Acobamba', 22, 1),
-(23, 'Saño', 23, 1),
-(24, 'Sapallanga', 24, 1),
-(25, 'Sicaya', 25, 1),
-(26, 'Viques', 26, 1),
-(27, 'San Agustín de Cajas', 27, 1);
-
-INSERT IGNORE INTO `comprobante_series` (`id`, `tipo`, `serie`, `correlativo`) VALUES
-(1, 'boleta', 'B001', 0),
-(2, 'factura', 'F001', 0);
