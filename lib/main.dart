@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'services/app_config.dart';
 import 'services/session_service.dart';
 import 'services/local_notification_service.dart';
 import 'theme/app_theme.dart';
@@ -7,6 +8,7 @@ import 'widgets/app_shell.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await AppConfig.init();
   await LocalNotificationService.instance.init();
   final user = await SessionService().getUser();
   runApp(MyApp(userLoggedIn: user != null, userName: user?.fullName ?? 'Cliente'));

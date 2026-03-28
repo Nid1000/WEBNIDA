@@ -23,6 +23,7 @@ class ApiClient {
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
+          options.baseUrl = ApiEndpoints.baseUrl;
           final prefs = await SharedPreferences.getInstance();
           final token = prefs.getString('token');
           if (token != null && token.isNotEmpty) {

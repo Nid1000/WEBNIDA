@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                             const SizedBox(height: 4),
                             const Text(
-                              'Revisa tus pedidos, recibe avisos y mantente al dia con todo lo nuevo de nuestra panaderia.',
+                              'Tu seguimiento de pedidos conectado al mismo sistema.',
                               style: TextStyle(
                                 color: AppColors.muted,
                                 fontWeight: FontWeight.w600,
@@ -94,16 +94,16 @@ class _MyHomePageState extends State<MyHomePage> {
                       Expanded(
                         child: _QuickStat(
                           icon: Icons.sync,
-                          label: 'Tu cuenta se sincroniza entre la web y la app.',
-                          value: 'Todo en un solo lugar',
+                          label: 'Mismo backend',
+                          value: '..',
                         ),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
                         child: _QuickStat(
                           icon: Icons.notifications_active_outlined,
-                          label: 'Recibe promociones, alertas y novedades pensadas para ti.',
-                          value: 'Siempre al tanto',
+                          label: 'Alertas',
+                          value: '..',
                         ),
                       ),
                     ],
@@ -222,7 +222,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Conectado con Delicias',
+                          'Vinculado con tu sistema web',
                           style: TextStyle(
                             fontWeight: FontWeight.w900,
                             color: AppColors.text,
@@ -230,7 +230,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         SizedBox(height: 4),
                         Text(
-                          'Tus pedidos, promociones y seguimiento se mantienen sincronizados en web y app.',
+                          'El login, los pedidos y el seguimiento usan la misma API del backend.',
                           style: TextStyle(color: AppColors.muted),
                         ),
                       ],
